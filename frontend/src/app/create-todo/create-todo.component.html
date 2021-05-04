@@ -1,0 +1,41 @@
+<h1>Reactive Forms</h1>
+<div class="container">
+    <form [formGroup]="todoForm">
+        <div>
+            <div>
+                <label> Firstname : </label>
+                <input type="text" formControlName="firstName">
+                <span *ngIf="controls.firstName.touched && controls.firstName.invalid">
+                    <span *ngIf="controls?.firstName?.errors?.required!">Please enter the firstName</span>
+                </span>
+            </div>
+            <div>
+                <label> Lastname: </label>
+                <input type="text" formControlName="lastName">
+                <span *ngIf="controls.lastName.touched && controls.lastName.invalid">
+                    <span *ngIf="controls?.lastName?.errors?.required!">Please enter the Lastname</span>
+                </span>
+            </div>
+            <div>
+                <label> Email: </label>
+                <input type="text" formControlName="email">
+                <span *ngIf="controls.email.touched && controls.email.invalid">
+                    <span *ngIf="controls?.email?.errors?.required">Please enter the email</span>
+                    <span *ngIf="controls?.email?.errors?.pattern!">Enter the valid email</span>
+                </span>
+            </div>
+            <div>
+                <label> Title :</label>
+                <textarea id="textarea" formControlName="title"></textarea>
+                <span *ngIf="controls.title.touched && controls.title.invalid">
+                    <span *ngIf="controls?.title?.errors?.required!">please enter the title</span>
+                    <span *ngIf="controls?.title?.errors?.minlength!">Please enter title min 12 digit</span>
+                </span>
+            </div>
+            <button type="submit" [disabled]="!todoForm.valid" (click)="onSubmit()">Submit</button>
+        </div>
+
+        <button type="button" (click)="goBack()">Back</button>
+
+    </form>
+</div>

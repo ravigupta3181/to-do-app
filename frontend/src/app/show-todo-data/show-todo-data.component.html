@@ -1,0 +1,30 @@
+<h1>Show Data</h1>
+
+<!-- <button routerLink="/showtododata" routerLinkActive="active">AllData</button> -->
+<button routerLink="/createtodo" routerLinkActive="active">Create</button>
+<table>
+    <thead>
+        <tr>
+            <th>Sr. No.</th>
+            <th>firstname</th>
+            <th>lastname</th>
+            <th>email</th>
+            <th>title</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let todo of todos; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{todo?.firstname}}</td>
+            <td>{{todo?.lastname}}</td>
+            <td>{{todo?.email}}</td>
+            <td>{{todo?.title}}</td>
+            <td>
+                <button (click)="edit(todo?.id)">Edit</button>
+                <button (click)="deleteById(todo?.id)">Delete</button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
